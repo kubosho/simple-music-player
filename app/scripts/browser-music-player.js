@@ -9,6 +9,9 @@
     BrowserMusicPlayer.prototype.loadingMusic = function () {
     };
 
+    BrowserMusicPlayer.prototype.isMusicFile = function () {
+    };
+
     BrowserMusicPlayer.prototype.play = function () {
     };
 
