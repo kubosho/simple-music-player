@@ -9,7 +9,14 @@
     BrowserMusicPlayer.prototype.loadingMusic = function () {
     };
 
-    BrowserMusicPlayer.prototype.isMusicFile = function () {
+    /**
+     * 指定されたファイルが音楽ファイルかどうか調べ、その結果を真偽値で返します
+     * @param file
+     * @returns {boolean}
+     */
+    BrowserMusicPlayer.prototype.isMusicFile = function (file) {
+        var type = file.type.substring(6, 9);
+        return /(mp3|wav|ogg|wma|m4a)/.test(type);
     };
 
     BrowserMusicPlayer.prototype.play = function () {
