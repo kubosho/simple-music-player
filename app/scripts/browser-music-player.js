@@ -6,12 +6,24 @@
         this.ctx = new AudioContext();
     }
 
-    BrowserMusicPlayer.prototype.loadingMusic = function () {
+    /**
+     * ファイルをFileReader.readAsDataURL()を使って読み込み、FileReaderオブジェクトを返します
+     * @param file {File}
+     * @returns {FileReader}
+     */
+    BrowserMusicPlayer.prototype.loadingMusic = function (file) {
+        if (!this.isMusicFile(file)) {
+            throw new Error('Not a music file');
+        }
+
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        return reader;
     };
 
     /**
      * 指定されたファイルが音楽ファイルかどうか調べ、その結果を真偽値で返します
-     * @param file
+     * @param file {File}
      * @returns {boolean}
      */
     BrowserMusicPlayer.prototype.isMusicFile = function (file) {
