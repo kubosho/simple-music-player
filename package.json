@@ -1,0 +1,29 @@
+{
+  "name": "ore-no-boilerplate",
+  "version": "0.0.1",
+  "description": "Boilerplate that contain styles and Karma+Mocha+power-assert for WebStorm.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kubosho/ore-no-boilerplate.git"
+  },
+  "keywords": [
+    "boilerplate"
+  ],
+  "author": "kubosho_",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kubosho/ore-no-boilerplate/issues"
+  },
+  "homepage": "https://github.com/kubosho/ore-no-boilerplate",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-espower": "^0.9.0",
+    "grunt-karma": "^0.8.3",
+    "karma": "^0.12.23",
+    "karma-mocha": "^0.1.9",
+    "mocha": "^1.21.4"
+  }
+}
