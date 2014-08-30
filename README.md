@@ -22,7 +22,7 @@ bower install
 
 ### Scripts
 
-- Karma
-- Mocha
-- power-assert
-- PhantomJS
+- [Karma](https://github.com/karma-runner/karma)
+- [Mocha](https://github.com/visionmedia/mocha)
+- [Power Assert](https://github.com/twada/power-assert)
+- [PhantomJS](https://github.com/ariya/phantomjs)
