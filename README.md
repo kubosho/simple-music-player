@@ -25,3 +25,4 @@ bower install
 - Karma
 - Mocha
 - power-assert
+- PhantomJS
