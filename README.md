@@ -25,6 +25,10 @@ bower install
 
 ## Contained library list
 
+### Styles
+
+- [normalize.scss](https://github.com/hail2u/normalize.scss)
+
 ### Scripts
 
 - [Karma](https://github.com/karma-runner/karma)
