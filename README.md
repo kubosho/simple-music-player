@@ -17,6 +17,11 @@ npm install -g grunt-cli bower
 npm install
 bower install
 ```
+## Grunt task list
+
+- test
+- development
+- production
 
 ## Contained library list
 
