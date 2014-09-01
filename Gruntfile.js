@@ -12,6 +12,6 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', ['espower', 'karma']);
-    grunt.registerTask('development', ['sass:development', 'csslint:lax']);
-    grunt.registerTask('production', ['sass:production', 'csslint:lax']);
+    grunt.registerTask('development', ['sass:development', 'csslint:lax', 'jshint', 'plato']);
+    grunt.registerTask('production', ['sass:production', 'csslint:lax', 'jshint', 'plato']);
 };
