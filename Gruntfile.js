@@ -12,6 +12,18 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', ['espower', 'karma']);
-    grunt.registerTask('development', ['sass:development', 'csslint:lax', 'jshint', 'plato']);
-    grunt.registerTask('production', ['sass:production', 'csslint:lax', 'jshint', 'plato']);
+    grunt.registerTask('development', [
+        'sass:development',
+        'csscomb:development',
+        'csslint:lax',
+        'jshint',
+        'plato'
+    ]);
+    grunt.registerTask('production', [
+        'sass:production',
+        'csscomb:production',
+        'csslint:lax',
+        'jshint',
+        'plato'
+    ]);
 };

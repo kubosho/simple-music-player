@@ -1,4 +1,5 @@
 module.exports = {
+    csscomb: require('./csscomb'),
     csslint: require('./csslint'),
     espower: require('./espower'),
     jshint: require('./jshint'),
