@@ -1,5 +1,7 @@
 .DS_Store
 .idea
-.tmp
 .sass-cache
+dist
+bower_components
 node_modules
+scripts/test/espower
