@@ -15,6 +15,19 @@ module.exports = function (grunt) {
         'espower',
         'karma'
     ]);
+
+    grunt.registerTask('script-build', [
+        'jshint',
+        'plato',
+        'connect'
+    ]);
+
+    grunt.registerTask('style-build', [
+        'sass:development',
+        'csscomb:development',
+        'csslint:lax'
+    ]);
+
     grunt.registerTask('development', [
         'sass:development',
         'csscomb:development',
@@ -23,6 +36,7 @@ module.exports = function (grunt) {
         'plato',
         'connect'
     ]);
+
     grunt.registerTask('production', [
         'sass:production',
         'csscomb:production',
