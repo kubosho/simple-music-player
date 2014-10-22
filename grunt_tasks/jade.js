@@ -1,5 +1,7 @@
 module.exports = {
-    files: {
-        "index.html": "index.jade"
+    compile: {
+        files: {
+            "index.html": "index.jade"
+	    }
     }
 };
