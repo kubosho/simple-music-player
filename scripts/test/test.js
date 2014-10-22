@@ -1,10 +1,13 @@
 describe('test', function () {
-    it('Add numbers', function () {
-        assert(add(1, 2) === 3);
+    beforeEach(function () {
+        this.browserMusicPlayer = new BrowserMusicPlayer();
     });
 
-    // failed
-    it('Add numbers', function () {
-        assert(add(1, 2) === 2);
+    it('play sound', function () {
+        assert();
+    });
+
+    it('stop sound', function () {
+        assert();
     });
 });
