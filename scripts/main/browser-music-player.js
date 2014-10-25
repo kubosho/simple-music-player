@@ -1,4 +1,4 @@
-(function (exports) {
+(function (global, undefined) {
     'use strict';
 
     /**
@@ -56,5 +56,5 @@
     BrowserMusicPlayer.prototype.forward = function () {
     };
 
-    exports.BrowserMusicPlayer = BrowserMusicPlayer;
-})(window);
+    global.BrowserMusicPlayer = BrowserMusicPlayer;
+})(this.self, void 0);
