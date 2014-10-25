@@ -4,7 +4,9 @@
     /**
      * @constructor
      */
-    function BrowserMusicPlayer () {}
+    function BrowserMusicPlayer () {
+        this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    }
 
     /**
      * ファイルをFileReader.readAsDataURL()を使って読み込み、FileReaderオブジェクトを返します
