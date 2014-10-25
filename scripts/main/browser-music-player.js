@@ -8,7 +8,7 @@
 
     /**
      * ファイルをFileReader.readAsDataURL()を使って読み込み、FileReaderオブジェクトを返します
-     * @param file {File}
+     * @param {File} file
      * @returns {FileReader}
      */
     BrowserMusicPlayer.prototype.loadMusic = function (file) {
@@ -23,7 +23,7 @@
 
     /**
      * 指定されたファイルが音楽ファイルかどうか調べ、その結果を真偽値で返します
-     * @param file {File}
+     * @param {File} file
      * @returns {boolean}
      */
     BrowserMusicPlayer.prototype.isMusicFile = function (file) {
@@ -33,6 +33,7 @@
 
     /**
      * audio要素を作ります
+     * @param {String} src
      * @returns {HTMLElement}
      */
     BrowserMusicPlayer.prototype.createAudioElement = function (src) {
