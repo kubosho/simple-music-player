@@ -52,6 +52,15 @@
         return audio;
     };
 
+    /**
+     * audio要素をもとに、MediaElementAudioSourceNodeを作ります
+     * @param {HTMLAudioElement} audioE
+     * @returns {MediaElementAudioSourceNode}
+     */
+    BrowserMusicPlayer.prototype.createSource = function (audioE) {
+        return this.ctx.createMediaElementSource(audioE);
+    };
+
     BrowserMusicPlayer.prototype.play = function () {
     };
 
