@@ -10,16 +10,24 @@
 
     /**
      * ファイルをFileReader.readAsDataURL()を使って読み込み、FileReaderオブジェクトを返します
+     * 読み込み完了時にeventとFileReader.resultを引数としてcallback関数が実行できます
      * @param {File} file
+     * @param {Function} callback
      * @returns {FileReader}
      */
-    BrowserMusicPlayer.prototype.loadMusic = function (file) {
+    BrowserMusicPlayer.prototype.loadMusic = function (file, callback) {
         if (!this.isMusicFile(file)) {
             throw new Error('Not a music file');
         }
 
+        callback = callback || function(){};
+
         var reader = new FileReader();
         reader.readAsDataURL(file);
+        reader.onload = function (event) {
+            callback(e, reader.result);
+        };
+
         return reader;
     };
 
