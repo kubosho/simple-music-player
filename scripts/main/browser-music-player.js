@@ -1,3 +1,10 @@
+/**
+ * Music player in browser
+ * author: kubosho_ <ta2@o2p.jp>
+ * Repository: https://github.com/kubosho/browser-music-player
+ * License: MIT
+ */
+
 (function (global, undefined) {
     'use strict';
 
