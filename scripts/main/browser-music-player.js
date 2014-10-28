@@ -26,7 +26,7 @@
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function (event) {
-            callback(e, reader.result);
+            callback(event, reader.result);
         };
 
         return reader;
@@ -45,6 +45,22 @@
 
     BrowserMusicPlayer.prototype.createSource = function (audioE) {
         return this.ctx.createMediaElementSource(audioE);
+    };
+
+    BrowserMusicPlayer.prototype.connects = function (source, audioNodeList) {
+        for (var i = 0, l = audioNodeList.length; i < l; i++) {
+            if (i === 0) {
+                source.connect(audioNodeList[i]);
+
+                if (l === 1) {
+                    audioNodeList[i].connect(this.ctx.destination);
+                }
+
+                return;
+            }
+
+            audioNodeList[i - 1].connect(audioNodeList[i]);
+        }
     };
 
     BrowserMusicPlayer.prototype.play = function () {
