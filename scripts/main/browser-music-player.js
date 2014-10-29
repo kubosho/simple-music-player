@@ -47,7 +47,7 @@
         return this.ctx.createMediaElementSource(audioE);
     };
 
-    BrowserMusicPlayer.prototype.connects = function (source, audioNodeList) {
+    BrowserMusicPlayer.prototype._connects = function (source, audioNodeList) {
         for (var i = 0, l = audioNodeList.length; i < l; i++) {
             if (i === 0) {
                 source.connect(audioNodeList[i]);
