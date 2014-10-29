@@ -17,15 +17,15 @@
     }
 
     BrowserMusicPlayer.prototype.loadMusic = function (file, callback) {
-        if (!this.isMusicFile(file)) {
-            throw new Error('Not a music file');
-        }
-
         callback = callback || function(){};
 
+        var that = this;
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function (event) {
+            if (!that.isMusicFile(file)) {
+                return console.warn('Warning: Not a music file');
+            }
             callback(event, reader.result);
         };
 
