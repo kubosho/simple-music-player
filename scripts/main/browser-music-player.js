@@ -63,7 +63,9 @@
         }
     };
 
-    BrowserMusicPlayer.prototype.play = function () {
+    BrowserMusicPlayer.prototype.play = function (source, audioNodeList) {
+        this._connects(source, audioNodeList);
+        source.start();
     };
 
     BrowserMusicPlayer.prototype.stop = function () {
