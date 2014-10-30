@@ -47,24 +47,8 @@
         return this.ctx.createMediaElementSource(audioE);
     };
 
-    BrowserMusicPlayer.prototype._connects = function (source, audioNodeList) {
-        for (var i = 0, l = audioNodeList.length; i < l; i++) {
-            if (i === 0) {
-                source.connect(audioNodeList[i]);
-
-                if (l === 1) {
-                    audioNodeList[i].connect(this.ctx.destination);
-                }
-
-                return;
-            }
-
-            audioNodeList[i - 1].connect(audioNodeList[i]);
-        }
-    };
-
-    BrowserMusicPlayer.prototype.play = function (source, audioNodeList) {
-        this._connects(source, audioNodeList);
+    BrowserMusicPlayer.prototype.play = function (source) {
+        source.connect(this.ctx.destination);
         source.start();
     };
 
