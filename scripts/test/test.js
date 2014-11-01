@@ -1,5 +1,12 @@
+/*global describe, it, assert, BrowserMusicPlayer */
 describe('Music player in browser', function () {
-    this.browserMusicPlayer = new BrowserMusicPlayer();
+    this.musicPlayer = new BrowserMusicPlayer();
+
+    describe('Instance', function () {
+        it('should BrowserMusicPlayer instance', function () {
+            assert(this.musicPlayer instanceof BrowserMusicPlayer === true);
+        });
+    });
 
     describe('#loadMusic()', function () {
         it('should load music file', function () {
