@@ -9,4 +9,4 @@ html(lang="ja")
   body#app
     h1 Music Player in browser
     input(type="file" value="" multiple v-on="change: loadMusic")
-    output
+    audio(src="" v-attr="src: source" v-repeat="source : sources")
