@@ -11,16 +11,17 @@
     /**
      * @constructor
      */
-    function BrowserMusicPlayer () {
-        var AudioContext = window.AudioContext || window.webkitAudioContext;
+    function MusicPlayer () {
+        var AudioContext = global.AudioContext || global.webkitAudioContext;
         this.ctx = new AudioContext();
     }
 
-    BrowserMusicPlayer.prototype.loadMusic = function (file, callback) {
+    MusicPlayer.prototype.loadMusic = function (file, callback) {
         callback = callback || function(){};
 
         var that = this;
         var reader = new FileReader();
+
         reader.readAsDataURL(file);
         reader.onload = function (event) {
             if (!that.isMusicFile(file)) {
@@ -32,34 +33,35 @@
         return reader;
     };
 
-    BrowserMusicPlayer.prototype.isMusicFile = function (file) {
+    MusicPlayer.prototype.isMusicFile = function (file) {
         var type = file.type.substring(6, 9);
         return /(mp3|wav|ogg|wma|m4a)/.test(type);
     };
 
-    BrowserMusicPlayer.prototype.createAudioElement = function (src) {
+    MusicPlayer.prototype.createAudioElement = function (src) {
         var audio = document.createElement('audio');
         audio.src = src;
         return audio;
     };
 
-    BrowserMusicPlayer.prototype.createSource = function (audioE) {
+    MusicPlayer.prototype.createSource = function (audioE) {
         return this.ctx.createMediaElementSource(audioE);
     };
 
-    BrowserMusicPlayer.prototype.play = function (source) {
+    MusicPlayer.prototype.play = function (source) {
         source.connect(this.ctx.destination);
         source.start();
     };
 
-    BrowserMusicPlayer.prototype.stop = function () {
+    MusicPlayer.prototype.stop = function (source) {
+        source.stop();
     };
 
-    BrowserMusicPlayer.prototype.rewind = function () {
+    MusicPlayer.prototype.rewind = function () {
     };
 
-    BrowserMusicPlayer.prototype.forward = function () {
+    MusicPlayer.prototype.forward = function () {
     };
 
-    global.BrowserMusicPlayer = BrowserMusicPlayer;
+    global.MusicPlayer = MusicPlayer;
 })(this.self, void 0);
