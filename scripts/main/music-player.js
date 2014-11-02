@@ -59,9 +59,11 @@
     };
 
     MusicPlayer.prototype.rewind = function () {
+        // TODO
     };
 
     MusicPlayer.prototype.forward = function () {
+        // TODO
     };
 
     global.MusicPlayer = MusicPlayer;
