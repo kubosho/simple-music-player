@@ -2,7 +2,11 @@
 html(lang="ja")
   head
     meta(content="charset=utf-8")
-    title test
-    script(src="main/main.js")
-  body>
-    h1 test
+    title Music Player in browser
+    script(src="scripts/main/browser-music-player.js")
+    script(src="bower_components/vue/dist/vue.js")
+    script(src="scripts/main/main.js")
+  body#app
+    h1 Music Player in browser
+    input(type="file" value="" multiple v-on="change: loadMusic")
+    output
