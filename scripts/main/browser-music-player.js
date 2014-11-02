@@ -23,11 +23,12 @@
         var reader = new FileReader();
 
         reader.readAsDataURL(file);
-        reader.onload = function (event) {
+        reader.onload = function () {
             if (!that.isMusicFile(file)) {
                 return console.warn('Warning: Not a music file');
             }
-            callback(event, reader.result);
+
+            callback(reader.result);
         };
 
         return reader;
