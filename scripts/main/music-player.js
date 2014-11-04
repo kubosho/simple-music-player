@@ -35,8 +35,26 @@
     };
 
     MusicPlayer.prototype.isMusicFile = function (file) {
-        var type = file.type.substring(6, 9);
-        return /(mp3|wav|ogg|wma|m4a)/.test(type);
+        var fileType = file.type;
+        var type = fileType.substring(6, 9);
+
+        if (/(mp3|wav)/.test(type)) {
+            return true;
+        }
+
+        // ref: Mime types - http://help.dottoro.com/lapuadlp.php
+        // type are (m4a || ogg || wma) ?
+        if (/x-./.test(type)) {
+            type = fileType.substring(6, 11);
+            // type is wma ?
+            type = type !== 'x-ms-' ? type : fileType.substring(6, 14);
+        }
+
+        if (/(^x-(m4a|ogg|ms-wma))/.test(type)) {
+            return true;
+        }
+
+        return false;
     };
 
     MusicPlayer.prototype.createAudioElement = function (src) {
