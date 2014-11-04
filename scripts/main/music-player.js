@@ -49,13 +49,12 @@
         return this.ctx.createMediaElementSource(audioE);
     };
 
-    MusicPlayer.prototype.play = function (source) {
-        source.connect(this.ctx.destination);
-        source.start();
+    MusicPlayer.prototype.play = function (audioE) {
+        audioE.play();
     };
 
-    MusicPlayer.prototype.stop = function (source) {
-        source.stop();
+    MusicPlayer.prototype.stop = function (audioE) {
+        audioE.pause();
     };
 
     MusicPlayer.prototype.rewind = function () {
