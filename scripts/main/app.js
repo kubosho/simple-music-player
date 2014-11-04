@@ -46,7 +46,7 @@
                         return;
                     }
 
-                    musicPlayer.stop(audioE);
+                    musicPlayer.pause(audioE);
                     isPlay = false;
                 }
             }
