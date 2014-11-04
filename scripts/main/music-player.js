@@ -46,7 +46,14 @@
     };
 
     MusicPlayer.prototype.createSource = function (audioE) {
-        return this.ctx.createMediaElementSource(audioE);
+        var source = null;
+
+        audioE.addEventListener('loadstart', function () {
+            source = this.ctx.createMediaElementSource(audioE);
+            source.connect(this.ctx.destination);
+        }, false);
+
+        return source;
     };
 
     MusicPlayer.prototype.play = function (audioE) {
