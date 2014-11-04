@@ -78,7 +78,7 @@
         audioE.play();
     };
 
-    MusicPlayer.prototype.stop = function (audioE) {
+    MusicPlayer.prototype.pause = function (audioE) {
         audioE.pause();
     };
 
