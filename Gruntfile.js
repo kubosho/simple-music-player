@@ -27,22 +27,4 @@ module.exports = function (grunt) {
         'csscomb:development',
         'csslint:lax'
     ]);
-
-    grunt.registerTask('development', [
-        'sass:development',
-        'csscomb:development',
-        'csslint:lax',
-        'jshint',
-        'plato',
-        'connect'
-    ]);
-
-    grunt.registerTask('production', [
-        'sass:production',
-        'csscomb:production',
-        'csslint:lax',
-        'jshint',
-        'plato',
-        'connect'
-    ]);
 };
