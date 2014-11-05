@@ -82,6 +82,11 @@
         audioE.pause();
     };
 
+    MusicPlayer.prototype.stop = function (audioE) {
+        this.pause(audioE);
+        audioE.currentTime = 0;
+    };
+
     MusicPlayer.prototype.rewind = function () {
         // TODO
     };
