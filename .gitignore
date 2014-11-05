@@ -1,7 +1,9 @@
+.idea/
+.sass-cache/
+dist/
+bower_components/
+node_modules/
+scripts/test/espower/
+
 .DS_Store
-.idea
-.sass-cache
-dist
-bower_components
-node_modules
-scripts/test/espower
+tags
