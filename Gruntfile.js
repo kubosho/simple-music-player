@@ -16,13 +16,13 @@ module.exports = function (grunt) {
         'karma'
     ]);
 
-    grunt.registerTask('script-build', [
+    grunt.registerTask('build:scripts', [
         'jshint',
         'plato',
         'connect'
     ]);
 
-    grunt.registerTask('style-build', [
+    grunt.registerTask('build:styles', [
         'sass:development',
         'csscomb:development',
         'csslint:lax'
