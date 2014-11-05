@@ -4,6 +4,7 @@ dist/
 bower_components/
 node_modules/
 scripts/test/espower/
+views/*.html
 
 .DS_Store
 tags
