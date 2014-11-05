@@ -1,46 +1,48 @@
-/*global describe, it, assert, MusicPlayer */
+/*global describe, before, it, assert, MusicPlayer */
 describe('Music player in browser', function () {
-    this.musicPlayer = new MusicPlayer();
+    before(function () {
+        this.musicPlayer = new MusicPlayer();
+    });
 
     describe('Instance', function () {
-        it('should MusicPlayer instance', function () {
+        it('should be made MusicPlayer instance', function () {
             assert(this.musicPlayer instanceof MusicPlayer === true);
         });
     });
 
     describe('#loadMusic()', function () {
         it('should load music file', function () {
-            assert(0 === 1);
+            // TODO
         });
     });
 
     describe('#isMusicFile()', function () {
         it('should is music file', function () {
-            assert(0 === 1);
+            // TODO
         });
     });
 
     describe('#play()', function () {
         it('should play sound', function () {
-            assert(0 === 1);
+            // TODO
         });
     });
 
     describe('#stop()', function () {
         it('should stop sound', function () {
-            assert(0 === 1);
+            // TODO
         });
     });
 
     describe('#rewind()', function () {
         it('should rewind sound', function () {
-            assert(0 === 1);
+            // TODO
         });
     });
 
     describe('#forward()', function () {
         it('should forward sound', function () {
-            assert(0 === 1);
+            // TODO
         });
     });
 });
