@@ -3,7 +3,7 @@ module.exports = {
         options: {
             configFile: 'karma.conf.js',
             autoWatch: false,
-            browsers: ["PhantomJS"],
+            browsers: ['Chrome'],
             reporters: ["progress"],
             singleRun: true,
             keepalive: true
