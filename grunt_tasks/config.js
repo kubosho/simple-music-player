@@ -7,5 +7,6 @@ module.exports = {
     jshint: require('./jshint'),
     karma: require('./karma'),
     sass: require('./sass'),
-    plato: require('./plato')
+    plato: require('./plato'),
+    watch: require('./watch')
 };
