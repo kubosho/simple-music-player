@@ -1,7 +1,7 @@
 module.exports = {
-    test: {
+    scripts: {
         files: ['scripts/main/*.js'],
-        tasks: ['test', 'script-build']
+        tasks: ['test', 'build:scripts']
     },
     jade: {
         files: ['*.jade'],
