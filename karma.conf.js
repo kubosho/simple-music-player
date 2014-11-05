@@ -3,7 +3,7 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['mocha'],
         files: [
-            'bower_components/power-assert/build/power-assert.js',
+            'dist/bower_components/power-assert/build/power-assert.js',
             'scripts/main/*.js',
             'scripts/test/espower/*.js'
         ],
