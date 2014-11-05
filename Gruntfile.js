@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build:scripts', [
         'jshint',
         'plato',
-        'connect'
+        'copy:scripts'
     ]);
 
     grunt.registerTask('build:styles', [

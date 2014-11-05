@@ -2,6 +2,7 @@ module.exports = {
     csscomb: require('./csscomb'),
     csslint: require('./csslint'),
     connect: require('./connect'),
+    copy: require('./copy'),
     espower: require('./espower'),
     jade: require('./jade'),
     jshint: require('./jshint'),
