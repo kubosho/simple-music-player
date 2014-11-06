@@ -9,6 +9,6 @@ html(lang="ja")
   body#app
     h1 Music Player in browser
     input(type="file" value="" multiple v-on="change: loadMusic")
-    //- ul(v-with="audio")
-      //- li(v-repeat="names" v-on="click: toggle" v-text="names")
-        //- audio(src="" v-repeat="sources" v-attr="src: sources")
+    audio(src="" v-repeat="source : sources" v-attr="src: source")
+    ul
+      li(v-repeat="name : names" v-on="click: toggle" v-text="name")
