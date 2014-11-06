@@ -4,7 +4,10 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         var musicPlayer = new MusicPlayer();
-        var hasSource = false;
+
+        var audioElms = document.getElementsByTagName('audio');
+
+        var currentPlay = -1;
         var isPlay = false;
 
         new Vue({
@@ -20,34 +23,32 @@
 
                     [].forEach.call(files, function (file) {
                         musicPlayer.loadMusic(file, function (src) {
-                            return that.$data.sources.push(src);
+                            that.$data.names.push(file.name);
+                            that.$data.sources.push(src);
                         });
-
-                        if (!musicPlayer.isMusicFile) {
-                            return;
-                        }
-                        that.$data.names.push(file.name);
                     });
                 },
                 toggle: function (event) {
-                    var elm = event.currentTarget;
-                    var index = this.$data.names.indexOf(elm.textContent);
-                    var audioElms = document.getElementsByTagName('audio'),
-                        audioE = audioElms[index];
+                    var index = this.$data.names.indexOf(event.currentTarget.textContent);
+                    var audioE = audioElms[index];
 
-                    if (!hasSource) {
-                        musicPlayer.createSource(audioE);
-                        hasSource = true;
-                    }
-
-                    if (!isPlay) {
+                    if (isPlay && currentPlay !== index) {
+                        musicPlayer.stop(audioElms[currentPlay]);
                         musicPlayer.play(audioE);
-                        isPlay = true;
+                        currentPlay = index;
                         return;
                     }
 
-                    musicPlayer.pause(audioE);
-                    isPlay = false;
+                    if (isPlay) {
+                        musicPlayer.pause(audioE);
+                        isPlay = false;
+                        currentPlay = -1;
+                        return;
+                    }
+
+                    musicPlayer.play(audioE);
+                    currentPlay = index;
+                    isPlay = true;
                 }
             }
         });
