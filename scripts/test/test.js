@@ -1,12 +1,14 @@
 /*global describe, before, it, assert, MusicPlayer */
 describe('Music player in browser', function () {
+    var musicPlayer = null;
+
     before(function () {
-        this.musicPlayer = new MusicPlayer();
+        musicPlayer = new MusicPlayer();
     });
 
     describe('Instance', function () {
         it('should be made MusicPlayer instance', function () {
-            assert(this.musicPlayer instanceof MusicPlayer === true);
+            assert(musicPlayer instanceof MusicPlayer === true);
         });
     });
 
@@ -17,8 +19,18 @@ describe('Music player in browser', function () {
     });
 
     describe('#isMusicFile()', function () {
-        it('should is music file', function () {
-            // TODO
+        it('should be file is music file format', function () {
+            var types = {
+                mp3: 'audio/mp3',
+                wav: 'audio/wav',
+                ogg: 'audio/ogg',
+                m4a: 'audio/x-m4a',
+                wma: 'audio/x-ms-wma'
+            };
+
+            for (var i in this.types) {
+                assert(musicPlayer.isMusicFile(types[i]) === true);
+            }
         });
     });
 
