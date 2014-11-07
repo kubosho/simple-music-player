@@ -3,15 +3,17 @@ var ts = require('gulp-typescript');
 var tslint = require('gulp-tslint');
 var jade = require('gulp-jade');
 var plato = require('gulp-plato');
+var espower = require('gulp-espower');
+var karma = require('karma').server;
 
 gulp.task('jade', function () {
-    gulp.src('./src/views/*.jade')
+    return gulp.src('./src/views/*.jade')
         .pipe(jade())
         .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('typescript', function () {
-    gulp.src('./src/scripts/**/*.ts')
+    return gulp.src('./src/scripts/**/*.ts')
         .pipe(tslint())
         .pipe(tslint.report('verbose'))
         .pipe(ts({
@@ -22,7 +24,7 @@ gulp.task('typescript', function () {
 });
 
 gulp.task('plato', function () {
-    gulp.src('./dist/scripts/*.js')
+    return gulp.src('./dist/scripts/*.js')
         .pipe(plato('./report', {
             jshint: {
                 options: {
@@ -33,6 +35,17 @@ gulp.task('plato', function () {
                 trycatch: true
             }
         }));
+});
+
+gulp.task('test', function (done) {
+    gulp.src('./test/scripts/*.js')
+        .pipe(espower())
+        .pipe(gulp.dest('./test/scripts/espower'));
+
+    return karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done);
 });
 
 gulp.task('default', function () {

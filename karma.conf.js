@@ -3,9 +3,9 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['mocha'],
         files: [
-            'dist/bower_components/power-assert/build/power-assert.js',
-            'scripts/main/*.js',
-            'scripts/test/espower/*.js'
+            './bower_components/power-assert/build/power-assert.js',
+            './src/scripts/*.js',
+            './test/scripts/espower/*.js'
         ],
         exclude: [
         ],
@@ -16,7 +16,7 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: false,
-        browsers: ['PhantomJS'],
+        browsers: ['Chrome'],
         singleRun: false
     });
 };
