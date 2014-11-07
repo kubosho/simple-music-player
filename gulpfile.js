@@ -16,7 +16,8 @@ gulp.task('typescript', function() {
         .pipe(ts({
             declarationFiles: true,
             target: 'es5'
-        }));
+        })
+        .pipe(gulp.dest('./dist/scripts/')));
 });
 
 gulp.task('default', function () {
