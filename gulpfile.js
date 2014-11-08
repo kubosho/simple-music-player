@@ -51,7 +51,7 @@ gulp.task('test', function (done) {
 });
 
 // Copy all files in "src" directory
-gulp.task('copy', function () {
+gulp.task('copy:files', function () {
     gulp.src([
         'src/**/*',
         '!src/**/*.html',
@@ -61,7 +61,7 @@ gulp.task('copy', function () {
 });
 
 // Copy all files in "bower_components" directory
-gulp.task('components', function () {
+gulp.task('copy:components', function () {
     gulp.src([
         'bower_components/**/*'
     ])
