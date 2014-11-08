@@ -1,26 +1,22 @@
 'use strict';
 
 var gulp = require('gulp');
-var ts = require('gulp-typescript');
-var tslint = require('gulp-tslint');
-var jade = require('gulp-jade');
-var plato = require('gulp-plato');
-var espower = require('gulp-espower');
+var $ = require('gulp-load-plugins')();
 var karma = require('karma').server;
 
 // Compile jade
 gulp.task('jade', function () {
     return gulp.src('./src/views/*.jade')
-        .pipe(jade())
+        .pipe($.jade())
         .pipe(gulp.dest('./dist/'));
 });
 
 // Compile and Lint TypeScript
 gulp.task('typescript', function () {
     return gulp.src('./src/scripts/**/*.ts')
-        .pipe(tslint())
-        .pipe(tslint.report('verbose'))
-        .pipe(ts({
+        .pipe($.tslint())
+        .pipe($.tslint.report('verbose'))
+        .pipe($.typescript({
             declarationFiles: true,
             target: 'es5'
         })
@@ -30,7 +26,7 @@ gulp.task('typescript', function () {
 // Generate complexity analysis reports
 gulp.task('analyze', function () {
     return gulp.src('./dist/scripts/*.js')
-        .pipe(plato('./report', {
+        .pipe($.plato('./report', {
             jshint: {
                 options: {
                     strict: true
@@ -45,7 +41,7 @@ gulp.task('analyze', function () {
 // Test scripts
 gulp.task('test', function (done) {
     gulp.src('./test/scripts/*.js')
-        .pipe(espower())
+        .pipe($.espower())
         .pipe(gulp.dest('./test/scripts/espower'));
 
     karma.start({
