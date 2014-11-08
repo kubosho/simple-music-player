@@ -54,7 +54,7 @@ gulp.task('test', function (done) {
 
 // Copy all files in "bower_components" directory
 gulp.task('copy:components', function () {
-    gulp.src([
+    return gulp.src([
         './bower_components/**/*'
     ])
     .pipe(gulp.dest('./dist/bower_components/'));
