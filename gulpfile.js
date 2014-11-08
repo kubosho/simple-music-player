@@ -23,7 +23,8 @@ gulp.task('typescript', function () {
         .pipe(gulp.dest('./dist/scripts/')));
 });
 
-gulp.task('plato', function () {
+// Generate complexity analysis reports
+gulp.task('analyze', function () {
     return gulp.src('./dist/scripts/*.js')
         .pipe(plato('./report', {
             jshint: {
