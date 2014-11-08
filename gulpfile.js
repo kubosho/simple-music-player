@@ -49,5 +49,23 @@ gulp.task('test', function (done) {
     }, done);
 });
 
+// Copy all files in "src" directory
+gulp.task('copy', function () {
+    gulp.src([
+        'src/**/*',
+        '!src/**/*.html',
+        '!src/**/*.css',
+    ])
+    .pipe(gulp.dest('dist/'));
+});
+
+// Copy all files in "bower_components" directory
+gulp.task('components', function () {
+    gulp.src([
+        'bower_components/**/*'
+    ])
+    .pipe(gulp.dest('dist/bower_components/'));
+});
+
 gulp.task('default', function () {
 });
