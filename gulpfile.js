@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var runSequence = require('run-sequence');
 var del = require('del');
 var karma = require('karma').server;
 var browserSync = require('browser-sync');
@@ -76,5 +77,7 @@ gulp.task('serve', function () {
     gulp.watch(['./dist/scripts/**/*.js'], ['analyze', 'test', reload]);
 });
 
-gulp.task('default', function () {
+// Build production files, the default task
+gulp.task('default', ['clean'], function () {
+    runSequence('typescript', 'test', 'analyze', ['jade', 'copy:components']);
 });
