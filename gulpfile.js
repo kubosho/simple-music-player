@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var del = require('del');
 var karma = require('karma').server;
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -59,6 +60,9 @@ gulp.task('copy:components', function () {
     ])
     .pipe(gulp.dest('./dist/bower_components/'));
 });
+
+// Clean output directory
+gulp.task('clean', del.bind(null, 'dist'));
 
 // Watch files for changes & reload
 gulp.task('serve', function () {
