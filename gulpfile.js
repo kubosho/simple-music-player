@@ -50,16 +50,6 @@ gulp.task('test', function (done) {
     }, done);
 });
 
-// Copy all files in "src" directory
-gulp.task('copy:files', function () {
-    gulp.src([
-        'src/**/*',
-        '!src/**/*.html',
-        '!src/**/*.css',
-    ])
-    .pipe(gulp.dest('dist/'));
-});
-
 // Copy all files in "bower_components" directory
 gulp.task('copy:components', function () {
     gulp.src([
