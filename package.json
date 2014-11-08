@@ -21,7 +21,8 @@
     "jade": "^1.7.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "gulp test",
+    "start": "gulp default"
   },
   "private": true
 }
