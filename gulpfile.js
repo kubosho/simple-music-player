@@ -3,6 +3,8 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var karma = require('karma').server;
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
 
 // Compile jade
 gulp.task('jade', function () {
@@ -53,9 +55,21 @@ gulp.task('test', function (done) {
 // Copy all files in "bower_components" directory
 gulp.task('copy:components', function () {
     gulp.src([
-        'bower_components/**/*'
+        './bower_components/**/*'
     ])
-    .pipe(gulp.dest('dist/bower_components/'));
+    .pipe(gulp.dest('./dist/bower_components/'));
+});
+
+// Watch files for changes & reload
+gulp.task('serve', function () {
+    browserSync({
+        notify: false,
+        server: './dist'
+    });
+
+    gulp.watch(['./src/views/**/*.jade'], ['jade', reload]);
+    gulp.watch(['./src/scripts/**/*.ts'], ['typescript']);
+    gulp.watch(['./dist/scripts/**/*.js'], ['analyze', 'test', reload]);
 });
 
 gulp.task('default', function () {
