@@ -22,6 +22,6 @@
   },
   "dependencies": {
     "modularized-normalize-scss": "~3.0.1",
-    "vue": "~0.10.6"
+    "vue": "^0.11.0"
   }
 }
