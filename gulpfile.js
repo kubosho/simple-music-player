@@ -52,12 +52,12 @@ gulp.task('test', function (done) {
     }, done);
 });
 
-// Copy all files in "bower_components" directory
-gulp.task('copy:components', function () {
+// Copy dependency libraries
+gulp.task('copy', function () {
     return gulp.src([
-        './bower_components/**/*'
+        './bower_components/vue/dist/vue.min.js'
     ])
-    .pipe(gulp.dest('./dist/bower_components/'));
+    .pipe(gulp.dest('./dist/scripts/lib/'));
 });
 
 // Clean output directory
