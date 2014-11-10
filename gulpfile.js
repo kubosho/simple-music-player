@@ -15,18 +15,6 @@ gulp.task('jade', function () {
         .pipe(gulp.dest('./dist/'));
 });
 
-// Compile and Lint TypeScript
-gulp.task('typescript', function () {
-    return gulp.src('./src/scripts/**/*.ts')
-        .pipe($.tslint())
-        .pipe($.tslint.report('verbose'))
-        .pipe($.typescript({
-            declarationFiles: true,
-            target: 'es5'
-        })
-        .pipe(gulp.dest('./dist/scripts/')));
-});
-
 // Generate complexity analysis reports
 gulp.task('analyze', function () {
     return gulp.src('./dist/scripts/*.js')
@@ -73,11 +61,10 @@ gulp.task('serve', function () {
     });
 
     gulp.watch(['./src/views/**/*.jade'], ['jade', reload]);
-    gulp.watch(['./src/scripts/**/*.ts'], ['typescript']);
     gulp.watch(['./dist/scripts/**/*.js'], ['analyze', 'test', reload]);
 });
 
 // Build production files, the default task
 gulp.task('default', ['clean'], function () {
-    runSequence('typescript', 'test', 'analyze', ['jade', 'copy:components']);
+    runSequence('test', 'analyze', ['jade', 'copy:components']);
 });
