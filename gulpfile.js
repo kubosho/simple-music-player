@@ -4,6 +4,8 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var del = require('del');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 var karma = require('karma').server;
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -28,6 +30,14 @@ gulp.task('analyze', function () {
                 trycatch: true
             }
         }));
+});
+
+// Build JavaScript, use browserify
+gulp.task('browserify', function () {
+    return browserify('./src/scripts/music-player.js')
+        .bundle()
+        .pipe(source('music-player.js'))
+        .pipe(gulp.dest('./dist/scripts/'));
 });
 
 // Test scripts
