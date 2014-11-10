@@ -5,94 +5,22 @@
  * License: MIT
  */
 
-(function (global, undefined) {
+(function (global) {
     'use strict';
 
-    /**
-     * @constructor
-     */
+    var loader = require('./lib/loader');
+    var create = require('./lib/create');
+    var sound  = require('./lib/sound');
+
     function MusicPlayer () {
-        var AudioContext = global.AudioContext || global.webkitAudioContext;
-        this.ctx = new AudioContext();
+        if (!(this instanceof MusicPlayer)) {
+            return new MusicPlayer();
+        }
+
+        this.loader = Object.create(loader);
+        this.create = Object.create(create);
+        this.sound = Object.create(sound);
     }
 
-    MusicPlayer.prototype.loadMusic = function (file, callback) {
-        callback = callback || function(){};
-
-        var that = this;
-        var reader = new FileReader();
-
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-            if (!that.isMusicFile(file.type)) {
-                return console.warn('Warning: Not a music file');
-            }
-
-            callback(reader.result);
-        };
-
-        return reader;
-    };
-
-    MusicPlayer.prototype.isMusicFile = function (filetype) {
-        var type = filetype.substring(6, 9);
-
-        if (/(mp3|wav|ogg)/.test(type)) {
-            return true;
-        }
-
-        // ref: Mime types - http://help.dottoro.com/lapuadlp.php
-        // type are (m4a || wma) ?
-        if (/x-./.test(type)) {
-            type = filetype.substring(6, 11);
-            // type is wma ?
-            type = type !== 'x-ms-' ? type : filetype.substring(6, 14);
-        }
-
-        if (/(^x-(m4a|ms-wma))/.test(type)) {
-            return true;
-        }
-
-        return false;
-    };
-
-    MusicPlayer.prototype.createAudioElement = function (src) {
-        var audio = document.createElement('audio');
-        audio.src = src;
-        return audio;
-    };
-
-    MusicPlayer.prototype.createSource = function (audioE) {
-        var source = null;
-
-        audioE.addEventListener('loadstart', function () {
-            source = this.ctx.createMediaElementSource(audioE);
-            source.connect(this.ctx.destination);
-        }, false);
-
-        return source;
-    };
-
-    MusicPlayer.prototype.play = function (audioE) {
-        audioE.play();
-    };
-
-    MusicPlayer.prototype.pause = function (audioE) {
-        audioE.pause();
-    };
-
-    MusicPlayer.prototype.stop = function (audioE) {
-        this.pause(audioE);
-        audioE.currentTime = 0;
-    };
-
-    MusicPlayer.prototype.rewind = function () {
-        // TODO
-    };
-
-    MusicPlayer.prototype.forward = function () {
-        // TODO
-    };
-
     global.MusicPlayer = MusicPlayer;
-})(this.self, void 0);
+})(this.self);
