@@ -1,7 +1,7 @@
-Music player in browser
+Simple music player
 =======================
 
-Music player in browser. Use a Web Audio API.
+Simple music player in browser. Use a Web Audio API.
 
 ## Demo
 
