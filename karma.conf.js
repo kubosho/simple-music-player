@@ -4,7 +4,7 @@ module.exports = function (config) {
         frameworks: ['mocha'],
         files: [
             './bower_components/power-assert/build/power-assert.js',
-            './src/scripts/*.js',
+            './build/scripts/*.js',
             './test/scripts/espower/*.js'
         ],
         exclude: [

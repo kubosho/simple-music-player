@@ -12,7 +12,7 @@ var reload = browserSync.reload;
 
 // Compile jade
 gulp.task('jade', function () {
-    return gulp.src('./src/views/*.jade')
+    return gulp.src('./example/views/*.jade')
         .pipe($.jade())
         .pipe(gulp.dest('./dist/'));
 });
@@ -34,10 +34,10 @@ gulp.task('analyze', function () {
 
 // Build JavaScript, use browserify
 gulp.task('browserify', function () {
-    return browserify('./src/scripts/music-player.js')
+    return browserify('./src/music-player.js')
         .bundle()
         .pipe(source('music-player.js'))
-        .pipe(gulp.dest('./dist/scripts/'));
+        .pipe(gulp.dest('./build/scripts/'));
 });
 
 // Test scripts
@@ -71,7 +71,7 @@ gulp.task('serve', function () {
     });
 
     gulp.watch(['./src/views/**/*.jade'], ['jade', reload]);
-    gulp.watch(['./dist/scripts/**/*.js'], ['analyze', 'test', reload]);
+    gulp.watch(['./dist/scripts/**/*.js'], [reload]);
 });
 
 // Build production files, the default task
