@@ -3,12 +3,12 @@ describe('Music player in browser', function () {
     var musicPlayer = null;
 
     before(function () {
-        musicPlayer = new MusicPlayer();
+        musicPlayer = MusicPlayer;
     });
 
     describe('Instance', function () {
         it('should be made MusicPlayer instance', function () {
-            assert(musicPlayer instanceof MusicPlayer === true);
+            assert(musicPlayer !== undefined);
         });
     });
 
@@ -29,7 +29,7 @@ describe('Music player in browser', function () {
             };
 
             for (var i in this.types) {
-                assert(musicPlayer.isMusicFile(types[i]) === true);
+                assert(musicPlayer.loader.isMusicFile(types[i]) === true);
             }
         });
     });
