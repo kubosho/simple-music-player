@@ -5,7 +5,7 @@
  * License: MIT
  */
 
-(function (global) {
+window.MusicPlayer = function () {
     'use strict';
 
     var loader = require('./lib/loader');
@@ -22,5 +22,5 @@
         this.sound = Object.create(sound);
     }
 
-    global.MusicPlayer = MusicPlayer;
-})(this.self);
+    return new MusicPlayer();
+};
