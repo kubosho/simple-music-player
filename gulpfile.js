@@ -10,27 +10,8 @@ var karma = require('karma').server;
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
-// Compile jade
-gulp.task('jade', function () {
-    return gulp.src('./example/views/*.jade')
-        .pipe($.jade())
-        .pipe(gulp.dest('./dist/'));
-});
-
-// Generate complexity analysis reports
-gulp.task('analyze', function () {
-    return gulp.src('./dist/scripts/*.js')
-        .pipe($.plato('./report', {
-            jshint: {
-                options: {
-                    strict: true
-                }
-            },
-            complexity: {
-                trycatch: true
-            }
-        }));
-});
+// Clean output directory
+gulp.task('clean', del.bind(null, ['build', 'dist']));
 
 // Build JavaScript, use browserify
 gulp.task('browserify', function () {
@@ -52,16 +33,43 @@ gulp.task('test', function (done) {
     }, done);
 });
 
+// Copy files
+gulp.task('copy:files', function () {
+    return gulp.src([
+        './build/scripts/music-player.js'
+    ])
+    .pipe(gulp.dest('./dist/scripts/'));
+});
+
 // Copy dependency libraries
-gulp.task('copy', function () {
+gulp.task('copy:libraries', function () {
     return gulp.src([
         './bower_components/vue/dist/vue.min.js'
     ])
-    .pipe(gulp.dest('./dist/scripts/lib/'));
+    .pipe(gulp.dest('./example/scripts/lib/'));
 });
 
-// Clean output directory
-gulp.task('clean', del.bind(null, 'dist'));
+// Generate complexity analysis reports
+gulp.task('analyze', function () {
+    return gulp.src('./dist/scripts/*.js')
+        .pipe($.plato('./report', {
+            jshint: {
+                options: {
+                    strict: true
+                }
+            },
+            complexity: {
+                trycatch: true
+            }
+        }));
+});
+
+// Compile jade
+gulp.task('jade', function () {
+    return gulp.src('./example/views/*.jade')
+        .pipe($.jade())
+        .pipe(gulp.dest('./example/views/'));
+});
 
 // Watch files for changes & reload
 gulp.task('serve', function () {
@@ -74,7 +82,11 @@ gulp.task('serve', function () {
     gulp.watch(['./dist/scripts/**/*.js'], [reload]);
 });
 
+gulp.task('build:scripts', function () {
+    return runSequence('browserify', ['test', 'copy:files'], 'analyze');
+});
+
 // Build production files, the default task
-gulp.task('default', ['clean'], function () {
-    runSequence('test', 'analyze', ['jade', 'copy:components']);
+gulp.task('default', function () {
+    return runSequence('clean', ['build:scripts', 'jade', 'copy:libraries']);
 });
